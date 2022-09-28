@@ -1,0 +1,29 @@
+.person {
+  display: flex;
+  align-items: center;
+  margin: 1.4em 1em auto;
+  color: #100e14;
+}
+
+.person__container {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.person__img {
+  margin-right: 1em;
+
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.person__name {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.person__age {
+  color: #5d5966;
+}
