@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
+import { people } from '../Data';
+import { FaArrowLeft, FaArrowRight, FaQuoteRight } from 'react-icons/fa';
 import './style.css';
-import { reviews } from '../Data';
-import { FaArrowLeft } from 'react-icons/fa';
-import { FaArrowRight } from 'react-icons/fa';
-import { FaQuoteRight } from 'react-icons/fa';
 
 export const Review = () => {
   const [index, setIndex] = useState(0);
-  const { name, job, image, text } = reviews[index];
-  console.log(reviews);
+  const { name, job, image, text } = people[index];
+
+  const prevPerson = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return newIndex;
+    });
+  };
+  const nextPerson = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return newIndex;
+    });
+  };
+
+  console.log(people);
   return (
     <article className="review">
       <div className="review__container">
@@ -21,10 +33,10 @@ export const Review = () => {
       <p className="review__job">{job}</p>
       <p className="review__text">{text}</p>
       <div className="review__content">
-        <button className="review__btn btn--prev">
+        <button className="review__btn btn--prev" onClick={prevPerson}>
           <FaArrowLeft />
         </button>
-        <button className="review__btn btn--next">
+        <button className="review__btn btn--next" onClick={nextPerson}>
           <FaArrowRight />
         </button>
       </div>
