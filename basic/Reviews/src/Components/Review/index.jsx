@@ -7,20 +7,37 @@ export const Review = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = people[index];
 
+  const checkNumber = (number) => {
+    if (number > people.length - 1) {
+      return 0;
+    }
+    if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
+  };
+
   const prevPerson = () => {
     setIndex((index) => {
       let newIndex = index - 1;
-      return newIndex;
+      return checkNumber(newIndex);
     });
   };
   const nextPerson = () => {
     setIndex((index) => {
-      let newIndex = index - 1;
-      return newIndex;
+      let newIndex = index + 1;
+      return checkNumber(newIndex);
     });
   };
 
-  console.log(people);
+  const randomPerson = () => {
+    let randomNumber = Math.floor(Math.random() * people.length);
+    if (randomNumber === index) {
+      randomNumber = index + 1;
+    }
+    setIndex(checkNumber(randomNumber));
+  };
+
   return (
     <article className="review">
       <div className="review__container">
@@ -40,7 +57,9 @@ export const Review = () => {
           <FaArrowRight />
         </button>
       </div>
-      <button className="random__btn">Aleatório</button>
+      <button className="random__btn" onClick={randomPerson}>
+        Aleatório
+      </button>
     </article>
   );
 };
